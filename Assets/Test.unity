@@ -140,10 +140,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f59fc99e722f4846b1e309874acd280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _plotLineColor: {r: 1, g: 1, b: 1, a: 1}
+  _gridLineColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  _zeroLineColor: {r: 0.735849, g: 0.16449524, b: 0.09371662, a: 1}
   _shader: {fileID: 4800000, guid: f4fd64c63d85a384887918eb98ada521, type: 3}
   _valueRange:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 9.3, y: 1, z: 1}
+    m_Center: {x: 1.51, y: 0.21, z: 0}
+    m_Extent: {x: 3.81, y: 2.51, z: 1}
 --- !u!4 &209225165
 Transform:
   m_ObjectHideFlags: 0

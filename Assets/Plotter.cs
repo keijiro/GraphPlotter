@@ -3,6 +3,10 @@
 [ExecuteInEditMode]
 public class Plotter : MonoBehaviour
 {
+    [SerializeField] Color _plotLineColor = Color.white;
+    [SerializeField] Color _gridLineColor = Color.gray;
+    [SerializeField] Color _zeroLineColor = Color.white;
+
     [SerializeField] Shader _shader;
     [SerializeField] Bounds _valueRange = new Bounds(Vector3.zero, Vector3.one * 2);
 
@@ -27,10 +31,23 @@ public class Plotter : MonoBehaviour
 
         _material.SetVector("_Range", new Vector4(
             _valueRange.min.x, _valueRange.max.x,
-            _valueRange.center.y, _valueRange.extents.y + _valueRange.center.y
+            _valueRange.min.y, _valueRange.max.y
         ));
 
+        _material.SetColor("_LineColor", _plotLineColor);
+        _material.SetColor("_GridColor", _gridLineColor);
+        _material.SetColor("_ZeroColor", _zeroLineColor);
+
+        _material.SetPass(1);
+        Graphics.DrawProcedural(MeshTopology.Lines, 256, 1);
+
+        _material.SetPass(2);
+        Graphics.DrawProcedural(MeshTopology.Lines, 256, 1);
+
+        _material.SetPass(3);
+        Graphics.DrawProcedural(MeshTopology.Lines, 4, 2);
+
         _material.SetPass(0);
-        Graphics.DrawProcedural(MeshTopology.LineStrip, 512, 1);
+        Graphics.DrawProcedural(MeshTopology.LineStrip, 1024, 1);
     }
 }
