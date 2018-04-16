@@ -30,8 +30,8 @@ public class Plotter : MonoBehaviour
         }
 
         _material.SetVector("_Range", new Vector4(
-            _valueRange.min.x, _valueRange.max.x,
-            _valueRange.min.y, _valueRange.max.y
+            _valueRange.min.x, _valueRange.min.y,
+            _valueRange.size.x, _valueRange.size.y
         ));
 
         _material.SetColor("_LineColor", _plotLineColor);
@@ -48,6 +48,6 @@ public class Plotter : MonoBehaviour
         Graphics.DrawProcedural(MeshTopology.Lines, 4, 2);
 
         _material.SetPass(0);
-        Graphics.DrawProcedural(MeshTopology.LineStrip, 1024, 1);
+        Graphics.DrawProcedural(MeshTopology.LineStrip, 2048, 4);
     }
 }

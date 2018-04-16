@@ -20,15 +20,21 @@
             #pragma vertex Vertex
             #pragma fragment Fragment
 
-            float4 Vertex(uint vid : SV_VertexID) : SV_Position
+            float4 Vertex(
+                uint vid : SV_VertexID,
+                uint iid : SV_InstanceID
+            ) : SV_Position
             {
-                float p = 1.0 / 512 * vid;
+                float p = 1.0 / 2048 * vid;
 
-                float x = lerp(_Range.x, _Range.y, p);
+                float x = _Range.x + _Range.z * p;
                 float sx = p * 2 - 1;
 
                 float y = sin(x * UNITY_PI);
-                float sy = (y - _Range.z) / (_Range.w - _Range.z) * 2 - 1;
+                float sy = (y - _Range.y) / _Range.w * 2 - 1;
+
+                sx += (iid & 1) * (_ScreenParams.z - 1) * 2;
+                sy += (iid / 2) * (_ScreenParams.w - 1) * 2;
 
                 return float4(sx, -sy, 1, 1);
             }
@@ -51,7 +57,7 @@
             float4 Vertex(uint vid : SV_VertexID) : SV_Position
             {
                 float x = floor(_Range.x) + (vid / 2);
-                x = (x - _Range.x) / (_Range.y - _Range.x) * 2 - 1;
+                x = (x - _Range.x) / _Range.z * 2 - 1;
 
                 float y = (vid & 1) * 2.0 - 1;
 
@@ -77,8 +83,8 @@
             {
                 float x = (vid & 1) * 2.0 - 1;
 
-                float y = floor(_Range.z) + (vid / 2);
-                y = (y - _Range.z) / (_Range.w - _Range.z) * 2 - 1;
+                float y = floor(_Range.y) + (vid / 2);
+                y = (y - _Range.y) / _Range.w * 2 - 1;
 
                 return float4(x, -y, 1, 1);
             }
@@ -102,8 +108,8 @@
             {
                 float v = (vid & 1) * 2.0 - 1;
 
-                float2 p1 = float2(v, -_Range.z / (_Range.w - _Range.z) * 2 - 1);
-                float2 p2 = float2(-_Range.x / (_Range.y - _Range.x) * 2 - 1, v);
+                float2 p1 = float2(v, -_Range.y / _Range.w * 2 - 1);
+                float2 p2 = float2(-_Range.x / _Range.z * 2 - 1, v);
 
                 return float4(vid < 2 ? p1 : p2, 1, 1) * float4(1, -1, 1, 1);
             }

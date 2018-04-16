@@ -141,12 +141,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plotLineColor: {r: 1, g: 1, b: 1, a: 1}
-  _gridLineColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
-  _zeroLineColor: {r: 0.735849, g: 0.16449524, b: 0.09371662, a: 1}
+  _gridLineColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+  _zeroLineColor: {r: 0.6226415, g: 0.0683387, b: 0, a: 1}
   _shader: {fileID: 4800000, guid: f4fd64c63d85a384887918eb98ada521, type: 3}
   _valueRange:
-    m_Center: {x: 1.51, y: 0.21, z: 0}
-    m_Extent: {x: 3.81, y: 2.51, z: 1}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 4.4444447, y: 2.5, z: 1}
 --- !u!4 &209225165
 Transform:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
+  m_BackGroundColor: {r: 0.121568635, g: 0.121568635, b: 0.121568635, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
