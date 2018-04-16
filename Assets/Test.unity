@@ -141,12 +141,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plotLineColor: {r: 1, g: 1, b: 1, a: 1}
-  _gridLineColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
-  _zeroLineColor: {r: 0.6226415, g: 0.0683387, b: 0, a: 1}
+  _gridLineColor: {r: 0.24203454, g: 0.28743815, b: 0.46226418, a: 1}
+  _zeroLineColor: {r: 1, g: 0.10691824, b: 0, a: 1}
+  _refLineColor: {r: 0.6792453, g: 0.6463119, b: 0.26593092, a: 1}
   _shader: {fileID: 4800000, guid: f4fd64c63d85a384887918eb98ada521, type: 3}
   _valueRange:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 4.4444447, y: 2.5, z: 1}
+    m_Extent: {x: 2.2222226, y: 1.25, z: 1}
 --- !u!4 &209225165
 Transform:
   m_ObjectHideFlags: 0

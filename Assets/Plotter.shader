@@ -8,6 +8,7 @@
     half4 _LineColor;
     half4 _GridColor;
     half4 _ZeroColor;
+    half4 _RefColor;
 
     ENDCG
 
@@ -30,7 +31,7 @@
                 float x = _Range.x + _Range.z * p;
                 float sx = p * 2 - 1;
 
-                float y = sin(x * UNITY_PI);
+                float y = smoothstep(0.2, 0.8, x);
                 float sy = (y - _Range.y) / _Range.w * 2 - 1;
 
                 sx += (iid & 1) * (_ScreenParams.z - 1) * 2;
@@ -117,6 +118,31 @@
             half4 Fragment(float4 vertex : SV_Position) : SV_Target
             {
                 return _ZeroColor;
+            }
+
+            ENDCG
+        }
+
+        Pass
+        {
+            CGPROGRAM
+
+            #pragma vertex Vertex
+            #pragma fragment Fragment
+
+            float4 Vertex(uint vid : SV_VertexID) : SV_Position
+            {
+                float y = (vid & 1) * 2.0 - 1;
+                float x = (vid < 2) ? 0.2 : 0.8;
+
+                x = (x -_Range.x) / _Range.z * 2 - 1;
+
+                return float4(x, y, 1, 1);
+            }
+
+            half4 Fragment(float4 vertex : SV_Position) : SV_Target
+            {
+                return _RefColor;
             }
 
             ENDCG

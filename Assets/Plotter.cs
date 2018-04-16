@@ -6,6 +6,7 @@ public class Plotter : MonoBehaviour
     [SerializeField] Color _plotLineColor = Color.white;
     [SerializeField] Color _gridLineColor = Color.gray;
     [SerializeField] Color _zeroLineColor = Color.white;
+    [SerializeField] Color _refLineColor = Color.yellow;
 
     [SerializeField] Shader _shader;
     [SerializeField] Bounds _valueRange = new Bounds(Vector3.zero, Vector3.one * 2);
@@ -37,6 +38,7 @@ public class Plotter : MonoBehaviour
         _material.SetColor("_LineColor", _plotLineColor);
         _material.SetColor("_GridColor", _gridLineColor);
         _material.SetColor("_ZeroColor", _zeroLineColor);
+        _material.SetColor("_RefColor", _refLineColor);
 
         _material.SetPass(1);
         Graphics.DrawProcedural(MeshTopology.Lines, 256, 1);
@@ -45,6 +47,9 @@ public class Plotter : MonoBehaviour
         Graphics.DrawProcedural(MeshTopology.Lines, 256, 1);
 
         _material.SetPass(3);
+        Graphics.DrawProcedural(MeshTopology.Lines, 4, 2);
+
+        _material.SetPass(4);
         Graphics.DrawProcedural(MeshTopology.Lines, 4, 2);
 
         _material.SetPass(0);
